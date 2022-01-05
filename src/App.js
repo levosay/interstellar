@@ -1,7 +1,7 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import {FetchTemplate} from './utils/fetchTemplate'
-import Turntable from './components/Turntable/Turntable'
+import AudioPlayer from './components/AudioPlayer/AudioPlayer'
 
 function App() {
   const [data, setData] = useState()
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <Turntable />
+      <AudioPlayer />
     </div>
   )
 }

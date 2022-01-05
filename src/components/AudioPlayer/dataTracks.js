@@ -1,4 +1,3 @@
-import sound_0 from '../../sounds/laki.mp3'
 import sound_1 from '../../sounds/Cornfield_Chase.mp3'
 import sound_2 from '../../sounds/Day_One.mp3'
 import sound_3 from '../../sounds/Detach.mp3'
@@ -10,14 +9,7 @@ import sound_8 from '../../sounds/The_Wormhole.mp3'
 import image_play from '../../img/turntable_img.jpg'
 
 
-export const DataSound = [
-  {
-    id: 0,
-    title: 'laki',
-    author: 'Hans Zimmer',
-    soundSrc: sound_0,
-    imgSrc: image_play,
-  },
+export const DataTracks = [
   {
     id: 1,
     title: 'Cornfield Chase',
