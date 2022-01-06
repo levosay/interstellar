@@ -65,11 +65,7 @@ const AudioPlayer = () => {
 
   const changeVolume = (value) => {
     setVolume(value * 100)
-    audioRef.current.volume = volume
-    console.log('volume ', volume)
-
-
-
+    audioRef.current.volume = value
   }
 
   useEffect(() => {
@@ -85,6 +81,7 @@ const AudioPlayer = () => {
     audioRef.current.pause()
 
     audioRef.current = new Audio(soundSrc)
+    audioRef.current.volume = volume / 100
     setTrackProgress(audioRef.current.currentTime)
 
     if (isReady.current) {
@@ -107,16 +104,25 @@ const AudioPlayer = () => {
 
   return (
     <div className={classes.player}>
-      <img src={imgSrc} alt={title}/>
-      <h2>{title}</h2>
-      <h3>{author}</h3>
-      <AudioControls
-        isPlaying={isPlaying}
-        onPrevClick={toPrevTrack}
-        onNextClick={toNextTrack}
-        onPlayPauseClick={setIsPlaying}
-      />
+      <div className={classes.topWrapper}>
+        <img
+          className={classes.trackImg}
+          src={imgSrc}
+          alt={title}
+        />
+        <div className={classes.descriptionWrapper}>
+          <h2 className={classes.title}>{title}</h2>
+          <h3 className={classes.author}>{author}</h3>
+        </div>
+        <AudioControls
+          isPlaying={isPlaying}
+          onPrevClick={toPrevTrack}
+          onNextClick={toNextTrack}
+          onPlayPauseClick={setIsPlaying}
+        />
+      </div>
       <input
+        className={classes.progress}
         type="range"
         value={trackProgress}
         step="1"
@@ -127,12 +133,13 @@ const AudioPlayer = () => {
         onKeyUp={onScrubEnd}
       />
       <input
+        className={classes.volume}
         type="range"
         value={volume}
         step="1"
         min="0"
         max="100"
-        onChange={(event => changeVolume(event.target.value))}
+        onChange={(event => changeVolume(event.target.value / 100))}
       />
 
     </div>

@@ -2,6 +2,8 @@ import React from 'react'
 import {useEffect, useState} from 'react'
 import {FetchTemplate} from './utils/fetchTemplate'
 import AudioPlayer from './components/AudioPlayer/AudioPlayer'
+import 'normalize.css'
+import './fonts/fonts.sass'
 
 function App() {
   const [data, setData] = useState()

@@ -1,6 +1,84 @@
 .player
+  display: flex
+  flex-direction: column
+  align-items: center
+  max-width: 330px
+  padding: 15px
+  border-radius: 10px
   background: grey
-  color: red
-  margin-left: 100px
-  padding-left: 50px
+  color: #fff
+  font-family: Roboto-Regular, sans-serif
+.topWrapper
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  width: 100%
+  margin-bottom: 10px
+.descriptionWrapper
+  width: 60%
+  margin-left: 10px
+  overflow: hidden
+.trackImg
+  width: 50px
+  height: 50px
+  border-radius: 50%
+.title
+  margin: 0
+  font-family: SplineSans-SemiBold, sans-serif
+  font-style: normal
+  font-weight: 700
+  font-size: 16px
+  line-height: 21px
+  letter-spacing: 0.1em
+  white-space: nowrap
+  //text-transform: uppercase
+.author
+  margin: 0
+  font-family: SplineSans-Regular, sans-serif
+  font-style: normal
+  font-weight: 400
+  font-size: 11px
+  line-height: 17px
 
+
+//#e2e3e4 #3d525d
+.progress
+  overflow: hidden
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  width: 70%
+  height: 3px
+  margin: auto
+  border-radius: 10px
+  background-color: #3d525d
+  &:hover
+    cursor: pointer
+
+  &::-webkit-slider-runnable-track
+    -webkit-appearance: none
+    border-radius: 10px
+    color: #e2e3e4
+
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    width: 0
+    height: 0
+    -webkit-box-shadow: -220px 0 0 220px #e2e3e4
+    -moz-box-shadow: -220px 0 0 220px #e2e3e4
+    box-shadow: -220px 0 0 220px #e2e3e4
+    &:hover
+      box-shadow: -220px 0 0 220px #BCD6D6
+  &::-moz-range-progress
+    background-color: #e2e3e4
+  &::-moz-range-track
+    background-color: #3d525d
+  &::-ms-fill-lower
+    background-color: #e2e3e4
+  &::-ms-fill-upper
+    background-color: #3d525d
+
+
+.volume
+  display: none
