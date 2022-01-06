@@ -127,13 +127,14 @@ const AudioPlayer = () => {
   }, [isPlaying])
 
   useEffect(() => {
+    const pausedNuw = audioRef.current.paused
     audioRef.current.pause()
 
     audioRef.current = new Audio(soundSrc)
     audioRef.current.volume = volume / 100
     setTrackProgress(audioRef.current.currentTime)
 
-    if (isReady.current) {
+    if (isReady.current && !pausedNuw) {
       audioRef.current.play()
       setIsPlaying(true)
       startTimer()
