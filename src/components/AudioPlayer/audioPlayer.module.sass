@@ -32,6 +32,7 @@
   line-height: 21px
   letter-spacing: 0.1em
   white-space: nowrap
+  animation: runLine 15s linear infinite 3s both
 .author
   margin: 0
   font-family: SplineSans-Regular, sans-serif
@@ -125,3 +126,9 @@
   font-weight: 400
   font-size: 11px
   letter-spacing: 0.1em
+
+
+
+@keyframes runLine
+  to
+    transform: translateX(-100%)
