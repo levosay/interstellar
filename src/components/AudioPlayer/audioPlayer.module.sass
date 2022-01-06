@@ -3,7 +3,7 @@
   flex-direction: column
   align-items: center
   max-width: 330px
-  padding: 15px
+  padding: 20px
   border-radius: 10px
   background: grey
   color: #fff
@@ -44,7 +44,7 @@
   flex-direction: row
   justify-content: space-between
   align-content: center
-.progress
+.progressInput
   overflow: hidden
   -webkit-appearance: none
   -moz-appearance: none
@@ -78,5 +78,43 @@
   &::-ms-fill-upper
     background-color: #3d525d
 
-.volume
-  display: none
+
+.volumeWrapper
+  position: relative
+  width: 100%
+  height: 0
+.volumeInput
+  opacity: 0
+  visibility: hidden
+  position: absolute
+  width: 63px
+  height: 5px
+  bottom: 53px
+  right: -32px
+  transform: rotate(270deg)
+  -webkit-appearance: none
+  overflow: hidden
+  border-radius: 10px
+  background-color: #3d525d
+  cursor: pointer
+  transition: .75s opacity, .75s visibility
+  &::-webkit-slider-runnable-track
+    -webkit-appearance: none
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    width: 0
+    height: 0
+    background: #F5D87E
+    cursor: pointer
+    box-shadow: -80px 0 0 80px #F5D87E
+.volumeImg
+  position: absolute
+  bottom: -2px
+  right: -12px
+  width: 22px
+  height: 22px
+  &:hover
+    cursor: pointer
+.volumeWrapper:hover .volumeInput
+  opacity: 1
+  visibility: visible
