@@ -32,7 +32,6 @@
   line-height: 21px
   letter-spacing: 0.1em
   white-space: nowrap
-  //text-transform: uppercase
 .author
   margin: 0
   font-family: SplineSans-Regular, sans-serif
@@ -40,27 +39,27 @@
   font-weight: 400
   font-size: 11px
   line-height: 17px
-
-
-//#e2e3e4 #3d525d
+.progressWrapper
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-content: center
 .progress
   overflow: hidden
   -webkit-appearance: none
   -moz-appearance: none
   appearance: none
-  width: 70%
+  width: 200px
   height: 3px
   margin: auto
   border-radius: 10px
   background-color: #3d525d
   &:hover
     cursor: pointer
-
   &::-webkit-slider-runnable-track
     -webkit-appearance: none
     border-radius: 10px
     color: #e2e3e4
-
   &::-webkit-slider-thumb
     -webkit-appearance: none
     width: 0
@@ -78,7 +77,6 @@
     background-color: #e2e3e4
   &::-ms-fill-upper
     background-color: #3d525d
-
 
 .volume
   display: none

@@ -68,6 +68,16 @@ const AudioPlayer = () => {
     audioRef.current.volume = value
   }
 
+  const addZero = (num) => num < 10 ? '0' + num : num
+
+  const showTime = (value) => {
+    const minutes = Math.floor(value / 60)
+    const seconds = Math.floor(value % 60)
+    return (
+      <span className={classes.progressTime}>{`${addZero(minutes)}:${addZero(seconds)}`}</span>
+    )
+  }
+
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play()
@@ -121,17 +131,21 @@ const AudioPlayer = () => {
           onPlayPauseClick={setIsPlaying}
         />
       </div>
-      <input
-        className={classes.progress}
-        type="range"
-        value={trackProgress}
-        step="1"
-        min="0"
-        max={duration ? duration : `${duration}`}
-        onChange={(event => onScrub(event.target.value))}
-        onMouseUp={onScrubEnd}
-        onKeyUp={onScrubEnd}
-      />
+      <div className={classes.progressWrapper}>
+        {showTime(audioRef.current.currentTime)}
+        <input
+          className={classes.progress}
+          type="range"
+          value={trackProgress}
+          step="1"
+          min="0"
+          max={duration ? duration : `${duration}`}
+          onChange={(event => onScrub(event.target.value))}
+          onMouseUp={onScrubEnd}
+          onKeyUp={onScrubEnd}
+        />
+        {showTime(duration)}
+      </div>
       <input
         className={classes.volume}
         type="range"
