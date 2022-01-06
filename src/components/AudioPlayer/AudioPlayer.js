@@ -149,8 +149,6 @@ const AudioPlayer = () => {
     }
   }, [])
 
-  console.log(audioRef.current.volume)
-
   return (
     <div className={classes.player}>
       <div className={classes.topWrapper}>
