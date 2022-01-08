@@ -15,6 +15,46 @@ const AudioPlayer = () => {
 
   const { title, author, imgSrc, soundSrc } = DataTracks[trackIndex]
 
+  const titleRef = useRef()
+
+  const runLineAnimation = () => {
+    if (titleRef.current) {
+      const titleWidth = titleRef.current.offsetWidth
+      const titleWrapperWidth = titleRef.current.parentElement.offsetWidth
+
+//transition: transform(-100%) 1.9s 0s linear
+
+      if (titleWidth > titleWrapperWidth) {
+        titleRef.current.classList.remove(classes.ofAnimation)
+        titleRef.current.animate([
+          // keyframes
+          { transform: `translateX(-${titleWidth - titleWrapperWidth + 5}px)` }
+        ], {
+          // timing options
+          delay: 3000,
+          duration: (titleWidth - titleWrapperWidth) * 100,
+          iterations: Infinity,
+          easing: "linear",
+
+        })
+      } else {
+          titleRef.current.animate([
+            // keyframes
+            { transform: 'translateX(0)' }
+          ], {
+            // timing options
+            delay: 0,
+            duration: 0,
+            iterations: Infinity,
+            easing: "linear",
+
+          })
+        // titleRef.current.classList.add(classes.ofAnimation)
+      }
+    }
+  }
+
+
   const audioRef = useRef(new Audio(soundSrc))
   const intervalRef = useRef()
   const isReady = useRef(false)
@@ -81,7 +121,6 @@ const AudioPlayer = () => {
   }
 
   const showVolumeIcon = (volume = 0.25) => {
-    console.log(volume)
     let elemVolumeIcon = audio33
     if (volume > 0.8) {
       elemVolumeIcon = audioOn
@@ -141,6 +180,7 @@ const AudioPlayer = () => {
     } else {
       isReady.current = true
     }
+    runLineAnimation()
   }, [trackIndex])
 
   useEffect(() => {
@@ -159,7 +199,7 @@ const AudioPlayer = () => {
           alt={title}
         />
         <div className={classes.descriptionWrapper}>
-          <h2 className={classes.title}>{title}</h2>
+          <h2 ref={titleRef} className={classes.title}>{title}</h2>
           <h3 className={classes.author}>{author}</h3>
         </div>
         <AudioControls
@@ -196,8 +236,6 @@ const AudioPlayer = () => {
           onChange={(event => changeVolume(event.target.value / 100))}
         />
       </div>
-
-
     </div>
   )
 }

@@ -25,14 +25,15 @@
   border-radius: 50%
 .title
   margin: 0
-  font-family: SplineSans-SemiBold, sans-serif
+  width: max-content
+  font-family: SplineSans-Regular, sans-serif
   font-style: normal
-  font-weight: 700
+  font-weight: 400
   font-size: 16px
-  line-height: 21px
+  line-height: 31px
   letter-spacing: 0.1em
   white-space: nowrap
-  animation: runLine 15s linear infinite 3s both
+
 .author
   margin: 0
   font-family: SplineSans-Regular, sans-serif
@@ -42,9 +43,8 @@
   line-height: 17px
 .progressWrapper
   display: flex
-  flex-direction: row
-  justify-content: space-between
-  align-content: center
+  align-items: center
+  width: 99%
 .progressInput
   overflow: hidden
   -webkit-appearance: none
@@ -52,7 +52,6 @@
   appearance: none
   width: 200px
   height: 3px
-  margin: auto
   border-radius: 10px
   background-color: #3d525d
   &:hover
@@ -127,8 +126,15 @@
   font-size: 11px
   letter-spacing: 0.1em
 
+//.runLineAnimation
+//  transition: width 2s, height 2s, background-color 2s, transform 2s
 
 
-@keyframes runLine
-  to
-    transform: translateX(-100%)
+//.ofAnimation
+//  animation: none !important
+//  transform: none !important
+//  transition: none !important
+
+//@keyframes runLine
+//  to
+//    transform: translateX(-100%)

@@ -12,21 +12,21 @@ import image_play from '../../img/turntable_img.jpg'
 export const DataTracks = [
   {
     id: 1,
-    title: 'Cornfield Chase 111111111111111111111',
+    title: 'Cornfield Chase',
     author: 'Hans Zimmer',
     soundSrc: sound_1,
     imgSrc: image_play,
   },
   {
     id: 2,
-    title: 'Day One',
+    title: 'Day One 11111111144',
     author: 'Hans Zimmer',
     soundSrc: sound_2,
     imgSrc: image_play,
   },
   {
     id: 3,
-    title: 'Detach',
+    title: 'Detach 222222222244',
     author: 'Hans Zimmer',
     soundSrc: sound_3,
     imgSrc: image_play,
