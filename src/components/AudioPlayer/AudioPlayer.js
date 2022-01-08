@@ -15,54 +15,13 @@ const AudioPlayer = () => {
 
   const { title, author, imgSrc, soundSrc } = DataTracks[trackIndex]
 
-  const titleRef = useRef()
-
-  const runLineAnimation = () => {
-    if (titleRef.current) {
-      const titleWidth = titleRef.current.offsetWidth
-      const titleWrapperWidth = titleRef.current.parentElement.offsetWidth
-
-//transition: transform(-100%) 1.9s 0s linear
-
-      if (titleWidth > titleWrapperWidth) {
-        titleRef.current.classList.remove(classes.ofAnimation)
-        titleRef.current.animate([
-          // keyframes
-          { transform: `translateX(-${titleWidth - titleWrapperWidth + 5}px)` }
-        ], {
-          // timing options
-          delay: 3000,
-          duration: (titleWidth - titleWrapperWidth) * 100,
-          iterations: Infinity,
-          easing: "linear",
-
-        })
-      } else {
-          titleRef.current.animate([
-            // keyframes
-            { transform: 'translateX(0)' }
-          ], {
-            // timing options
-            delay: 0,
-            duration: 0,
-            iterations: Infinity,
-            easing: "linear",
-
-          })
-        // titleRef.current.classList.add(classes.ofAnimation)
-      }
-    }
-  }
-
-
   const audioRef = useRef(new Audio(soundSrc))
   const intervalRef = useRef()
   const isReady = useRef(false)
   const nowVolume = useRef([])
+  const titleRef = useRef()
 
   const { duration } = audioRef.current
-
-
 
   const startTimer = () => {
     clearInterval(intervalRef.current)
@@ -73,7 +32,7 @@ const AudioPlayer = () => {
       } else {
         setTrackProgress(audioRef.current.currentTime)
       }
-    }, [1000])
+    }, 1000)
   }
 
   const onScrub = (value) => {
@@ -153,6 +112,30 @@ const AudioPlayer = () => {
     } else if (audioRef.current.volume > 0) {
       setVolume(0)
         audioRef.current.volume = 0
+    }
+  }
+
+  const runLineAnimation = () => {
+    if (titleRef.current) {
+      const titleWidth = titleRef.current.offsetWidth
+      const titleWrapperWidth = titleRef.current.parentElement.offsetWidth
+
+      titleRef.current.classList.remove(classes.runLineAnimation)
+
+      if (titleWidth > titleWrapperWidth) {
+        titleRef.current.style
+          .setProperty('--width-translateX',
+            `-${titleWidth - titleWrapperWidth + 5}px`)
+        titleRef.current.style
+          .setProperty('--time-translateX',
+            `${(titleWidth - titleWrapperWidth) * 120}ms`)
+
+        setTimeout(() => {
+          titleRef.current.classList.add(classes.runLineAnimation)
+        }, 1000)
+      } else {
+        titleRef.current.classList.remove(classes.runLineAnimation)
+      }
     }
   }
 

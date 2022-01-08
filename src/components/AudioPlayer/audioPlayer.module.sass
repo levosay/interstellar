@@ -1,3 +1,7 @@
+\:root
+  --width-translateX: 0
+  --time-translateX: 0
+
 .player
   display: flex
   flex-direction: column
@@ -33,7 +37,6 @@
   line-height: 31px
   letter-spacing: 0.1em
   white-space: nowrap
-
 .author
   margin: 0
   font-family: SplineSans-Regular, sans-serif
@@ -126,15 +129,15 @@
   font-size: 11px
   letter-spacing: 0.1em
 
-//.runLineAnimation
-//  transition: width 2s, height 2s, background-color 2s, transform 2s
 
 
-//.ofAnimation
-//  animation: none !important
-//  transform: none !important
-//  transition: none !important
+.runLineAnimation
+  animation: runLine var(--time-translateX) linear infinite 0s both
 
-//@keyframes runLine
-//  to
-//    transform: translateX(-100%)
+@keyframes runLine
+  0%
+    transform: translateX(0px)
+  40%
+    transform: translateX(0px)
+  100%
+    transform: translateX(var(--width-translateX))
